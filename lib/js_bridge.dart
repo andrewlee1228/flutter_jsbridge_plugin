@@ -55,7 +55,7 @@ class JsBridge {
           function = (dynamic data) {
             JsMsg callbackMsg = JsMsg();
             callbackMsg.responseId = msg.callbackId;
-            callbackMsg.responseData = data;
+            callbackMsg.responseData = convert.jsonEncode(data);
             // 发送
             _loadJs(sprintf(_dartToJs, [_replaceJson(callbackMsg.toJson())]));
           };
