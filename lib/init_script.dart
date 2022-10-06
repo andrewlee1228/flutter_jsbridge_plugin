@@ -230,7 +230,9 @@ String init_script_android = '''
         registerHandler: registerHandler,
         callHandler: callHandler,
         _handleMessageFromNative: _handleMessageFromNative,
-        _fetchQueue: _fetchQueue
+        _fetchQueue: _fetchQueue,
+	isAndroid: isAndroid,
+	isIos: isIphone
     };
 
     var doc = document;
