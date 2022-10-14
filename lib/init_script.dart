@@ -243,6 +243,7 @@ String init_script_android = '''
     doc.dispatchEvent(readyEvent);
 })();''';
 
+// 원본 코드로 수정함 https://github.com/ibeilly/flutter_jsbridge_plugin/blob/master/lib/init_script.dart
 String init_script_ios = '''
 (function() {
 	if (window.WebViewJavascriptBridge) {
