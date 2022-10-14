@@ -248,7 +248,6 @@ String init_script_ios = '''
 	if (window.WebViewJavascriptBridge) {
 		return;
 	}
-
 	if (!window.onerror) {
 		window.onerror = function(msg, url, line) {
 			console.log("WebViewJavascriptBridge: ERROR:" + msg + "@" + url + ":" + line);
@@ -261,7 +260,6 @@ String init_script_ios = '''
 		_handleMessageFromNative: _handleMessageFromNative,
 		_fetchQueue: _fetchQueue
 	};
-
 	var messagingIframe;
 	var sendMessageQueue = [];
 	var messageHandlers = {};
@@ -271,7 +269,6 @@ String init_script_ios = '''
 	var responseCallbacks = {};
 	var uniqueId = 1;
 	var dispatchMessagesWithTimeoutSafety = true;
-
 	function registerHandler(handlerName, handler) {
 		messageHandlers[handlerName] = handler;
 	}
@@ -297,7 +294,6 @@ String init_script_ios = '''
 		sendMessageQueue.push(message);
 		_getIframe().src = 'jsbridge://return/fetch'
 	}
-
 	function _dispatchMessageFromNative(messageJSON) {
 		if (dispatchMessagesWithTimeoutSafety) {
 			setTimeout(_doDispatchMessageFromNative, 0);
@@ -309,7 +305,6 @@ String init_script_ios = '''
 			var message = JSON.parse(messageJSON);
 			var messageHandler;
 			var responseCallback;
-
 			if (message.responseId) {
 				responseCallback = responseCallbacks[message.responseId];
 				if (!responseCallback) {
@@ -363,7 +358,6 @@ String init_script_ios = '''
   
 	registerHandler("_disableJavascriptAlertBoxSafetyTimeout", disableJavscriptAlertBoxSafetyTimeout);
 	setTimeout(_callWVJBCallbacks, 0);
-
 	function _callWVJBCallbacks() {
 		var callbacks = window.WVJBCallbacks;
 		delete window.WVJBCallbacks;
