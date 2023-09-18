@@ -107,6 +107,6 @@ class JsBridge {
   }
 
   void _loadJs(String script) {
-    _webViewController.evaluateJavascript(script);
+    _webViewController.runJavaScript(script);
   }
 }
