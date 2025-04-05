@@ -38,6 +38,10 @@ public class FlutterjsbridgepluginPlugin implements FlutterPlugin, MethodCallHan
     @Override
     public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
         activity = binding.getActivity();
+        final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutterjsbridgeplugin");
+        FlutterjsbridgepluginPlugin plugin = new FlutterjsbridgepluginPlugin();
+        plugin.setActivity(registrar.activity());
+        channel.setMethodCallHandler(plugin);
     }
 
     @Override
@@ -64,12 +68,12 @@ public class FlutterjsbridgepluginPlugin implements FlutterPlugin, MethodCallHan
     // them functionally equivalent. Only one of onAttachedToEngine or registerWith will be called
     // depending on the user's project. onAttachedToEngine or registerWith must both be defined
     // in the same class.
-    public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutterjsbridgeplugin");
-        FlutterjsbridgepluginPlugin plugin = new FlutterjsbridgepluginPlugin();
-        plugin.setActivity(registrar.activity());
-        channel.setMethodCallHandler(plugin);
-    }
+    // public static void registerWith(Registrar registrar) {
+    //     final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutterjsbridgeplugin");
+    //     FlutterjsbridgepluginPlugin plugin = new FlutterjsbridgepluginPlugin();
+    //     plugin.setActivity(registrar.activity());
+    //     channel.setMethodCallHandler(plugin);
+    // }
 
     // diankechengjin.cn/b/index
     @Override
