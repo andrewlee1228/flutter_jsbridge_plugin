@@ -38,9 +38,12 @@ public class FlutterjsbridgepluginPlugin implements FlutterPlugin, MethodCallHan
     @Override
     public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
         activity = binding.getActivity();
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutterjsbridgeplugin");
+    }
+
+    private void setup(BinaryMessenger messenger) {
+        channel = new MethodChannel(messenger, "flutterjsbridgeplugin");
         FlutterjsbridgepluginPlugin plugin = new FlutterjsbridgepluginPlugin();
-        plugin.setActivity(registrar.activity());
+        plugin.setActivity(activity);
         channel.setMethodCallHandler(plugin);
     }
 
